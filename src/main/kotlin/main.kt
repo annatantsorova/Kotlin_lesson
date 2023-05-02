@@ -1,3 +1,4 @@
+// Practice 2 - println, print
 fun main() {
     println("Greetings of the day!")
     println("My name is Anna and i live in Russia.")
@@ -10,5 +11,15 @@ fun main() {
     * print(" and happy to be a part of such a ")
     * print(" wonderful and deep IT world")*/
 }
+
+
+
+
+
+
+
+
+
+
 
 
