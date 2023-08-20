@@ -5,23 +5,42 @@
 //Вычислите нужный член последовательности с помощью формулы F(n) = F(n-1) + F(n-2) и цикла.
 //Выведите рассчитанное значение в консоль. Убедитесь, что число рассчитано верно, проверив его по таблице чисел Фибоначчи. Поэкспериментируйте с разными n.
 
-
 fun main() {
-    var n : Int =  -10000000;
-    while (n < 0 ) {
-        print("Введите число : ")
-        n = readLine()?.toIntOrNull() ?: return
-        if (n < 0) {
-            println("Ошибка: число должно быть больше нуля.")
+    val n = getValidInput()
+    val fibNumber = fibonacci(n)
+    println("Число Фибоначчи F($n) = $fibNumber")
+}
+fun getValidInput(): Int {
+    while (true) {
+        try {
+            print("Введите число ")
+            val n = readLine()?.toIntOrNull()
+            if (n != null && n > 0) {
+                return n
+            } else {
+                println("Ошибка ввода. Число должно быть больше 0.")
+            }
+        } catch (e: NumberFormatException) {
+            println("Ошбка ввода. Введите целое число.")
         }
     }
-
-    var n0 = 0L
-    var n1 = 1L
-    for (i in 2 until n) {
-        val n2 = n0 + n1
-        n0 = n1
-        n1 = n2
-    }
-    println("Вычисленное число из ряда Фибоначчи: $n1")
 }
+
+    fun fibonacci(n: Int): Int {
+        if (n == 1 || n == 2 ) {
+            return 1
+        }
+        var fibPrev = 1
+        var fibCurr = 1
+        for (i in 3..n) {
+            val fibNext = fibPrev + fibCurr
+            fibPrev = fibCurr
+            fibCurr = fibNext
+        }
+        return fibCurr
+    }
+
+
+
+
+
